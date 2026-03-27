@@ -21,10 +21,6 @@
 	display_name = "jackboots"
 	path = /obj/item/clothing/shoes/jackboots
 
-/datum/gear/footwear/combatboots
-	display_name = "combat boots"
-	path = /obj/item/clothing/shoes/combat
-
 /datum/gear/footwear/miningboots
 	display_name = "mining boots"
 	path = /obj/item/clothing/shoes/workboots/mining

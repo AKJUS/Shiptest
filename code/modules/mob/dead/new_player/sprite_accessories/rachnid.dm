@@ -5,7 +5,7 @@
 /datum/sprite_accessory/spider_legs
 	icon = 'icons/mob/species/rachnid/spider_legs.dmi'
 	color_src = 0
-	secondary_color_overlay = TRUE
+	secondary_color = TRUE
 
 /datum/sprite_accessory/spider_legs/carapace
 	name = "Carapace"
@@ -16,7 +16,7 @@
 /datum/sprite_accessory/spider_spinneret
 	icon = 'icons/mob/species/rachnid/spider_spinneret.dmi'
 	color_src = MUTCOLORS
-	secondary_color_overlay = TRUE
+	secondary_color = TRUE
 
 /datum/sprite_accessory/spider_spinneret/spikecore
 	name = "Spikecore"
@@ -33,7 +33,7 @@
 /datum/sprite_accessory/spider_spinneret/folds
 	name = "Folds"
 	icon_state = "folds"
-	secondary_color_overlay = FALSE
+	secondary_color = FALSE
 
 /datum/sprite_accessory/spider_spinneret/prongs
 	name = "Prongs"

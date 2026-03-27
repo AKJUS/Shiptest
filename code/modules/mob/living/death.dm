@@ -12,7 +12,6 @@
 		spread_bodyparts(no_brain, no_organs)
 
 	spawn_gibs(no_bodyparts)
-	SEND_SIGNAL(src, COMSIG_LIVING_GIBBED)
 	if(!safe_gib)
 		qdel(src)
 
@@ -79,7 +78,6 @@
 	update_health_hud()
 	med_hud_set_health()
 	med_hud_set_status()
-	SEND_SIGNAL(src, COMSIG_LIVING_DEATH)
 	stop_pulling()
 
 	if(typing_indicator)

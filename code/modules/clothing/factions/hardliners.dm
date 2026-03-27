@@ -17,7 +17,6 @@
 	icon_state = "hl_jumpsuit"
 	item_state = "hl_jumpsuit"
 
-
 /obj/item/clothing/under/syndicate/hardliners/officer
 	name = "hardliners officer uniform"
 	desc = "A button-up uniform with cargo pants, certainly more tactical than most officer uniforms."
@@ -143,7 +142,6 @@
 	icon = 'icons/obj/clothing/faction/hardliners/head.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/faction/hardliners/head.dmi'
 	hardsuit_type = "hl"
-	supports_variations = DIGITIGRADE_VARIATION | KEPORI_VARIATION | VOX_VARIATION
 
 /obj/item/clothing/suit/space/hardsuit/syndi/hl
 	name = "white-red hardsuit"
@@ -156,7 +154,7 @@
 	mob_overlay_icon = 'icons/mob/clothing/faction/hardliners/suits.dmi'
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/hl
 	jetpack = null
-	supports_variations = DIGITIGRADE_VARIATION | KEPORI_VARIATION | VOX_VARIATION
+	supports_variations = DIGITIGRADE_VARIATION | KEPORI_VARIATION
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/elite/hl
 	name = "elite white-red hardsuit helmet"
@@ -198,7 +196,7 @@
 	icon_state = "hl_surgery"
 	icon = 'icons/obj/clothing/faction/hardliners/head.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/faction/hardliners/head.dmi'
-	supports_variations = VOX_VARIATION
+
 
 /obj/item/clothing/head/hardhat/hardliners
 	name = "white-red hard hat"
@@ -209,7 +207,7 @@
 
 /obj/item/clothing/head/hardliners/peaked
 	name = "Hardliner peaked cap"
-	desc = "A stylish peaked cap utilized by high-ranking officers of the Hardliner movement. Most who wear it are likely to have been a veteran of the ICW, still vying for revenge against Makosso-Warra..."
+	desc = "A stylish peaked cap utilized by high-ranking officers of the Hardliner movement. Most who wear it are likely to have been a veteran of the ICW, still vying for revenge against Nanotrasen..."
 	icon_state = "hl_officer"
 	item_state = "hl_officer"
 
@@ -257,7 +255,7 @@
 	item_state = "hl_webbing"
 	icon = 'icons/obj/clothing/faction/hardliners/belt.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/faction/hardliners/belt.dmi'
-	supports_variations = KEPORI_VARIATION | VOX_VARIATION
+	supports_variations = KEPORI_VARIATION
 
 /obj/item/storage/belt/security/webbing/hardliners/sidewinder/PopulateContents()
 	. = ..()

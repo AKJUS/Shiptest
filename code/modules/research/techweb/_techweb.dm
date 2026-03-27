@@ -46,7 +46,7 @@
 
 /datum/techweb/science	//Global science techweb for RND consoles.
 	id = "SCIENCE"
-	organization = "Makosso-warra"
+	organization = "Nanotrasen"
 
 /datum/techweb/ship/New(ship_name)
 	id = ship_name

@@ -16,14 +16,9 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/pgf
 
 	l_pocket = /obj/item/melee/knife/combat
-	r_pocket = /obj/item/tank/internals/emergency_oxygen/double
+	r_pocket = /obj/item/flashlight/seclite
 
-	backpack = /obj/item/storage/backpack/security/gezena
-	satchel = /obj/item/storage/backpack/satchel/sec/gezena
-	duffelbag = /obj/item/storage/backpack/duffelbag
-	courierbag = /obj/item/storage/backpack/messenger/sec/gezena
-
-	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2, /obj/item/grenade/frag=2, /obj/item/flashlight/seclite)
+	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2, /obj/item/grenade/frag=2)
 
 
 /datum/outfit/job/gezena/ert/gunner
@@ -56,7 +51,7 @@
 	courierbag = /obj/item/storage/backpack/messenger/para
 	box = /obj/item/storage/box/survival/medical
 
-	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2, /obj/item/flashlight/seclite)
+	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2)
 
 
 /datum/outfit/job/gezena/ert/leader
@@ -72,7 +67,7 @@
 	neck = /obj/item/clothing/neck/cloak/gezena/command
 	suit_store = /obj/item/gun/energy/kalix/pgf/heavy
 
-	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2, /obj/item/grenade/smokebomb = 3, /obj/item/binoculars, /obj/item/flashlight/seclite)
+	backpack_contents = list(/obj/item/gun/energy/kalix/pistol, /obj/item/stock_parts/cell/gun/kalix = 2, /obj/item/grenade/smokebomb = 3, /obj/item/binoculars)
 
 
 /datum/outfit/job/gezena/ert/trooper
@@ -95,13 +90,7 @@
 
 	l_pocket = /obj/item/stock_parts/cell/gun/kalix
 	r_pocket = /obj/item/reagent_containers/spray/pepper
-
-	backpack = /obj/item/storage/backpack
-	satchel = /obj/item/storage/backpack/satchel
-	duffelbag = /obj/item/storage/backpack/duffelbag
-	courierbag = /obj/item/storage/backpack/messenger
-
-	backpack_contents = list(/obj/item/restraints/handcuffs = 2, /obj/item/clothing/mask/whistle, /obj/item/flashlight/seclite, /obj/item/tank/internals/emergency_oxygen/double)
+	backpack_contents = list(/obj/item/restraints/handcuffs = 2, /obj/item/clothing/mask/whistle, /obj/item/flashlight/seclite)
 
 /datum/outfit/job/gezena/ert/inspector
 	name = "ERT - PGF Naval Observer"
@@ -125,4 +114,4 @@
 	duffelbag = /obj/item/storage/backpack/satchel
 	courierbag = /obj/item/storage/backpack/satchel
 
-	backpack_contents = list(/obj/item/folder, /obj/item/paper_bin/bundlenatural, /obj/item/hand_labeler, /obj/item/stock_parts/cell/gun/kalix, /obj/item/tank/internals/emergency_oxygen/double)
+	backpack_contents = list(/obj/item/folder, /obj/item/paper_bin/bundlenatural, /obj/item/hand_labeler, /obj/item/stock_parts/cell/gun/kalix)

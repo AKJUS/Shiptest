@@ -54,10 +54,10 @@
 	autolinkers = list("processor1", "command", "common", "messaging", "receiverA")
 
 /obj/machinery/telecomms/bus/preset_two
-	id = "Makosso-Warra Communications Bus"
+	id = "Nanotrasen Communications Bus"
 	network = "tcommsat"
-	freq_listening = list(FREQ_WARRA, FREQ_COMMON)
-	autolinkers = list("processor2", "warra", "receiverA", "messaging")
+	freq_listening = list(FREQ_NANOTRASEN, FREQ_COMMON)
+	autolinkers = list("processor2", "nanotrasen", "receiverA", "messaging")
 
 /obj/machinery/telecomms/bus/preset_three
 	id = "Syndicate Communications Bus"

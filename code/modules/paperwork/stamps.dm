@@ -71,6 +71,11 @@
 	icon_state = "stamp-syndicate"
 	dye_color = DYE_SYNDICATE
 
+/obj/item/stamp/donk
+	name = "Donk! Co. rubber stamp"
+	icon_state = "stamp-donk"
+	dye_color = DYE_SYNDICATE
+
 /obj/item/stamp/cybersun
 	name = "Cybersun Virtual Solutions rubber stamp"
 	icon_state = "stamp-cybersun"
@@ -175,66 +180,66 @@
 	icon_state = "stamp-suns"
 	dye_color = DYE_PURPLE
 
-/obj/item/stamp/warra
-	name = "Makosso-Warra rubber stamp"
+/obj/item/stamp/nanotrasen
+	name = "Nanotrasen rubber stamp"
 	desc = "A small rubber stamp for stamping important documents."
-	icon_state = "stamp-warra"
+	icon_state = "stamp-nt"
 	dye_color = DYE_BLUE
 
-/obj/item/stamp/warra/captain
+/obj/item/stamp/nanotrasen/captain
 	name = "NT Captain's rubber stamp"
-	icon_state = "stamp-warra_cap"
+	icon_state = "stamp-nt_cap"
 
-/obj/item/stamp/warra/officer
+/obj/item/stamp/nanotrasen/officer
 	name = "NT Officer's rubber stamp"
-	icon_state = "stamp-warra_fo"
+	icon_state = "stamp-nt_fo"
 
-/obj/item/stamp/warra/engineering
+/obj/item/stamp/nanotrasen/engineering
 	name = "NT Engineering Director's rubber stamp"
-	icon_state = "stamp-warra_engdir"
+	icon_state = "stamp-nt_engdir"
 
-/obj/item/stamp/warra/medical
+/obj/item/stamp/nanotrasen/medical
 	name = "NT Medical Director's rubber stamp"
-	icon_state = "stamp-warra_meddir"
+	icon_state = "stamp-nt_meddir"
 
-/obj/item/stamp/warra/science
+/obj/item/stamp/nanotrasen/science
 	name = "NT Science Director's rubber stamp"
-	icon_state = "stamp-warra_scidir"
+	icon_state = "stamp-nt_scidir"
 
-/obj/item/stamp/warra/ns
+/obj/item/stamp/nanotrasen/ns
 	name = "N+S Logistics rubber stamp"
 	icon_state = "stamp-ns"
 	dye_color = DYE_ORANGE
 
-/obj/item/stamp/warra/ns/captain
+/obj/item/stamp/nanotrasen/ns/captain
 	name = "N+S Captain's rubber stamp"
 	icon_state = "stamp-ns_cap"
 
-/obj/item/stamp/warra/ns/supply
+/obj/item/stamp/nanotrasen/ns/supply
 	name = "N+S Supply Director's rubber stamp"
 	icon_state = "stamp-ns_supdir"
 
-/obj/item/stamp/warra/vigilitas
+/obj/item/stamp/nanotrasen/vigilitas
 	name = "Vigilitas Interstellar rubber stamp"
 	icon_state = "stamp-vi"
 	dye_color = DYE_HOS
 
-/obj/item/stamp/warra/vigilitas/captain
+/obj/item/stamp/nanotrasen/vigilitas/captain
 	name = "VI Captain's rubber stamp"
 	icon_state = "stamp-vi_cap"
 
-/obj/item/stamp/warra/vigilitas/security
+/obj/item/stamp/nanotrasen/vigilitas/security
 	name = "VI Security Director's rubber stamp"
 	icon_state = "stamp-vi_secdir"
 
-/obj/item/stamp/warra/vigilitas/loss_prevention
+/obj/item/stamp/nanotrasen/vigilitas/loss_prevention
 	name = "VI Loss Prevention rubber stamp"
 	icon_state = "stamp-vi_lp"
 
-/obj/item/stamp/warra/central
+/obj/item/stamp/nanotrasen/central
 	name = "NT Central Command rubber stamp"
-	desc = "A rubber stamp for stamping important documents." // Needed, because base warra has "small" added.
-	icon_state = "stamp-warra_central"
+	desc = "A rubber stamp for stamping important documents." // Needed, because base nt has "small" added.
+	icon_state = "stamp-nt_central"
 
 /obj/item/stamp/attack_paw(mob/user)
 	return attack_hand(user)

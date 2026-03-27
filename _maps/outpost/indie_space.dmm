@@ -588,7 +588,8 @@
 /turf/open/floor/plating,
 /area/outpost/maintenance/starboard)
 "cH" = (
-/turf/closed/wall/r_wall/rust,
+/obj/structure/falsewall/reinforced,
+/turf/closed/indestructible/reinforced/rust,
 /area/outpost/vacant_rooms/office)
 "cI" = (
 /obj/structure/disposalpipe/segment{
@@ -810,7 +811,10 @@
 /obj/structure/platform/wood_two/corner{
 	dir = 8
 	},
-/obj/item/reagent_containers/food/drinks/mead,
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_y = 5;
+	pixel_x = -7
+	},
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plasteel/grimy,
 /area/outpost/maintenance/starboard)
@@ -4288,10 +4292,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /turf/open/floor/plasteel/patterned,
 /area/outpost/cargo)
-"qm" = (
-/obj/structure/falsewall/reinforced,
-/turf/open/floor/plating/rust,
-/area/outpost/maintenance/central)
 "qn" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -5027,10 +5027,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rust,
 /area/outpost/maintenance/central)
-"tl" = (
-/obj/structure/falsewall/reinforced,
-/turf/open/floor/plating,
-/area/outpost/vacant_rooms/office)
 "tq" = (
 /obj/machinery/mineral/electrolyzer_unloader,
 /turf/open/floor/plasteel/patterned/grid,
@@ -5272,7 +5268,10 @@
 "ul" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/reagent_containers/food/drinks/mead,
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_y = 11;
+	pixel_x = 8
+	},
 /turf/open/floor/plasteel/grimy,
 /area/outpost/maintenance/starboard)
 "un" = (
@@ -6725,7 +6724,7 @@
 /area/outpost/maintenance/fore)
 "Ac" = (
 /obj/structure/falsewall/reinforced,
-/turf/open/floor/plating/asteroid,
+/turf/closed/wall/r_wall/rust,
 /area/outpost/maintenance/starboard)
 "Ad" = (
 /obj/effect/decal/cleanable/glass/strange,
@@ -20855,7 +20854,7 @@ iy
 lK
 oA
 uR
-qm
+Az
 zd
 lO
 zS
@@ -21961,7 +21960,7 @@ yj
 Km
 Km
 Km
-tl
+Km
 cH
 Az
 Az
@@ -22801,7 +22800,7 @@ ay
 Wo
 dq
 vw
-EF
+Ac
 Kp
 hf
 ay

@@ -6,12 +6,10 @@
 /datum/wound/burn
 	name = "Burn Wound"
 	a_or_from = "from"
-	sound_effect = 'sound/effects/wounds/sizzle1.ogg'
-
-/datum/wound/burn/flesh
-	name = "Burn (Flesh) Wound"
-	a_or_from = "from"
+	wound_type = WOUND_BURN
 	processes = TRUE
+	sound_effect = 'sound/effects/wounds/sizzle1.ogg'
+	wound_flags = (FLESH_WOUND | ACCEPTS_GAUZE)
 
 	treatable_by = list(/obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh) // sterilizer and alcohol will require reagent treatments, coming soon
 
@@ -32,18 +30,8 @@
 	/// Once we reach infestation beyond WOUND_INFESTATION_SEPSIS, we get this many warnings before the limb is completely paralyzed (you'd have to ignore a really bad burn for a really long time for this to happen)
 	var/strikes_to_lose_limb = 3
 
-/datum/wound_pregen_data/flesh_burn
-	abstract = TRUE
 
-	required_wounding_types = list(WOUND_BURN)
-	required_limb_biostate = BIO_FLESH
-
-	wound_series = WOUND_SERIES_FLESH_BURN_BASIC
-
-/datum/wound/burn/flesh/handle_process(seconds_per_tick, times_fired)
-	if (!victim || IS_IN_STASIS(victim))
-		return
-
+/datum/wound/burn/handle_process()
 	. = ..()
 	if(strikes_to_lose_limb == 0) // we've already hit sepsis, nothing more to do
 		victim.adjustToxLoss(0.5)
@@ -136,7 +124,7 @@
 						set_disabling(TRUE)
 				strikes_to_lose_limb--
 
-/datum/wound/burn/flesh/get_examine_description(mob/user)
+/datum/wound/burn/get_examine_description(mob/user)
 	if(strikes_to_lose_limb <= 0)
 		return span_deadsay("<B>[victim.p_their(TRUE)] [limb.name] has locked up completely and is non-functional.</B>")
 
@@ -169,7 +157,7 @@
 
 	return "<B>[condition.Join()]</B>"
 
-/datum/wound/burn/flesh/get_scanner_description(mob/user)
+/datum/wound/burn/get_scanner_description(mob/user)
 	if(strikes_to_lose_limb == 0)
 		var/oopsie = "Type: [name]\nSeverity: [severity_text()]"
 		oopsie += "<div class='ml-3'>Infection Level: <span class='deadsay'>The bodypart has suffered complete sepsis and must be removed. Amputate or augment limb immediately.</span></div>"
@@ -202,15 +190,15 @@
 */
 
 /// if someone is using ointment or mesh on our burns
-/datum/wound/burn/flesh/proc/ointmentmesh(obj/item/stack/medical/I, mob/user)
+/datum/wound/burn/proc/ointmentmesh(obj/item/stack/medical/I, mob/user)
 	user.visible_message(
 		span_notice("[user] begins applying [I] to [victim]'s [limb.name]..."),
 		span_notice("You begin applying [I] to [user == victim ? "your" : "[victim]'s"] [limb.name]..."),
 	)
 	if (I.amount <= 0)
-		return TRUE
+		return
 	if(!do_after(user, (user == victim ? I.self_delay : I.other_delay), extra_checks = CALLBACK(src, PROC_REF(still_exists))))
-		return TRUE
+		return
 
 	limb.heal_damage(I.heal_brute, I.heal_burn)
 	user.visible_message(
@@ -225,26 +213,25 @@
 	// in this fashion rather than have the cut immediately clear up. maybe bleed wounds could downgrade into muscle wounds...?
 	if((infestation <= 0 || sanitization >= infestation) && (flesh_damage <= 0 || flesh_healing > flesh_damage))
 		to_chat(user, span_notice("You've done all you can with [I], [victim]'s [limb.name] can't be treated further."))
-		return TRUE
 	else
-		return try_treating(I, user)
+		try_treating(I, user)
 
-/datum/wound/burn/flesh/treat(obj/item/I, mob/user)
+/datum/wound/burn/treat(obj/item/I, mob/user)
 	if(istype(I, /obj/item/stack/medical/ointment))
-		return ointmentmesh(I, user)
+		ointmentmesh(I, user)
 
 	else if(istype(I, /obj/item/stack/medical/mesh))
 		var/obj/item/stack/medical/mesh/mesh_check = I
 		if(!mesh_check.is_open)
 			to_chat(user, span_warning("You need to open [mesh_check] first."))
 			return
-		return ointmentmesh(mesh_check, user)
+		ointmentmesh(mesh_check, user)
 
-/datum/wound/burn/flesh/on_synthflesh(amount)
+/datum/wound/burn/on_synthflesh(amount)
 	flesh_healing += amount * 0.5 // 20u patch will heal 10 flesh standard
 
 /// When a -tane chem is applied to the victim, we call this.
-/datum/wound/burn/flesh/on_tane(amount)
+/datum/wound/burn/on_tane(amount)
 	if(amount > 10 && severity <= WOUND_SEVERITY_SEVERE)
 		qdel(src)
 		return
@@ -254,7 +241,7 @@
 	return
 
 //crystal reagent lets you fully clear burns because they're rare chemicals and burns suck ass with no cryo
-/datum/wound/burn/flesh/on_crystal(power)
+/datum/wound/burn/on_crystal(power)
 	if(power>=5)
 		to_chat(victim, span_green("The burns on your [limb.name] have been regenerated, leaving only minor necrosis."))
 		victim.adjustCloneLoss(5)
@@ -262,7 +249,7 @@
 	return
 
 //So does rezadone
-/datum/wound/burn/flesh/on_rezadone(power)
+/datum/wound/burn/on_rezadone(power)
 	if(power>=10)
 		// Rapidly regenerating burns isn't so clean, especially when there's an infection to purge
 		to_chat(victim, span_green("The burns on your [limb.name] clear up, leaving you with an ill feeling."))
@@ -281,7 +268,7 @@
 	return
 
 // we don't even care about first degree burns, straight to second
-/datum/wound/burn/flesh/moderate
+/datum/wound/burn/moderate
 	name = "Second Degree Burns"
 	desc = "Patient is suffering considerable burns with mild skin penetration, weakening limb integrity and increased burning sensations."
 	treat_text = "Recommended application of topical ointment or regenerative mesh to affected region."
@@ -289,38 +276,27 @@
 	occur_text = "breaks out with violent red burns"
 	severity = WOUND_SEVERITY_MODERATE
 	damage_mulitplier_penalty = 1.05
+	threshold_minimum = 40
 	threshold_penalty = 20
-	status_effect_type = /datum/status_effect/wound/burn/flesh/moderate
+	status_effect_type = /datum/status_effect/wound/burn/moderate
 	flesh_damage = 5
 
-/datum/wound_pregen_data/flesh_burn/second_degree
-	abstract = FALSE
-
-	wound_path_to_generate = /datum/wound/burn/flesh/moderate
-	threshold_minimum = 40
-
-/datum/wound/burn/flesh/severe
+/datum/wound/burn/severe
 	name = "Third Degree Burns"
 	desc = "Patient is suffering extreme burns with full skin penetration, creating serious risk of infection and greatly reduced limb integrity."
 	treat_text = "Recommended immediate disinfection and excision of any infected skin, followed by bandaging and ointment."
 	examine_desc = "appears seriously charred, with aggressive red splotches"
 	occur_text = "chars rapidly, spreading angry red burns"
 	severity = WOUND_SEVERITY_SEVERE
-	wound_flags = ACCEPTS_GAUZE | NUMBS_BODYPART
 	damage_mulitplier_penalty = 1.1
+	threshold_minimum = 80
 	threshold_penalty = 30
-	status_effect_type = /datum/status_effect/wound/burn/flesh/severe
+	status_effect_type = /datum/status_effect/wound/burn/severe
 	treatable_by = list(/obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.03
 	flesh_damage = 12.5
 
-/datum/wound_pregen_data/flesh_burn/third_degree
-	abstract = FALSE
-
-	wound_path_to_generate = /datum/wound/burn/flesh/severe
-	threshold_minimum = 80
-
-/datum/wound/burn/flesh/critical
+/datum/wound/burn/critical
 	name = "Catastrophic Burns"
 	desc = "Patient is suffering near complete loss of tissue and significantly charred muscle and bone, creating life-threatening risk of infection and negligible limb integrity."
 	treat_text = "Immediate surgical debriding of any infected skin, followed by potent tissue regeneration formula and bandaging."
@@ -329,15 +305,9 @@
 	severity = WOUND_SEVERITY_CRITICAL
 	damage_mulitplier_penalty = 1.15
 	sound_effect = 'sound/effects/wounds/sizzle2.ogg'
+	threshold_minimum = 140
 	threshold_penalty = 80
-	status_effect_type = /datum/status_effect/wound/burn/flesh/critical
+	status_effect_type = /datum/status_effect/wound/burn/critical
 	treatable_by = list(/obj/item/stack/medical/ointment, /obj/item/stack/medical/mesh)
 	infestation_rate = 0.07
 	flesh_damage = 20
-	wound_flags = ACCEPTS_GAUZE | MANGLES_EXTERIOR | NUMBS_BODYPART
-
-/datum/wound_pregen_data/flesh_burn/fourth_degree
-	abstract = FALSE
-
-	wound_path_to_generate = /datum/wound/burn/flesh/critical
-	threshold_minimum = 140

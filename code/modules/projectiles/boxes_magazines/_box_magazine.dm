@@ -18,7 +18,7 @@
 	///list containing the actual ammo within the magazine
 	var/list/stored_ammo = list()
 	///type that the magazine will be searching for, rejects if not a subtype of
-	var/obj/item/ammo_casing/ammo_type = /obj/item/ammo_casing
+	var/ammo_type = /obj/item/ammo_casing
 	///maximum amount of ammo in the magazine
 	var/max_ammo = 7
 	///Controls how sprites are updated for the ammo box; see defines in combat.dm: AMMO_BOX_ONE_SPRITE; AMMO_BOX_PER_BULLET; AMMO_BOX_FULL_EMPTY
@@ -236,26 +236,7 @@
 		bullet2pop.fire_act()
 
 /obj/item/ammo_box/magazine
-	//Default magazine weight, only differs for tiny mags and drums
-	w_class = WEIGHT_CLASS_SMALL
-	///if this magazine can be quickly emptied with an alt-click
-	var/quick_empty = TRUE
-
-/obj/item/ammo_box/magazine/examine(mob/user)
-	. = ..()
-	if(quick_empty)
-		. += span_notice("You can <b>Alt-Click</b> [src] to quickly empty the entire magazine")
-
-/obj/item/ammo_box/magazine/AltClick(mob/user)
-	. = ..()
-	if(quick_empty)
-		if(do_after(user, 20, src))
-			playsound(src, 'sound/weapons/gun/smg/uzi_unload.ogg', 50)
-			empty_magazine()
-			to_chat(user, "You unload [src]")
-			return
-
-
+	w_class = WEIGHT_CLASS_SMALL //Default magazine weight, only differs for tiny mags and drums
 
 ///Count of number of bullets in the magazine
 /obj/item/ammo_box/magazine/proc/ammo_count(countempties = TRUE)

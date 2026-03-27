@@ -23,9 +23,8 @@
 		"na", "an", "ne", "en", "ni", "in", "no", "on", "nu", "un", "ng", "ts",
 		"a",  "a",  "e",  "e",  "i",  "i",  "o",  "o",  "u",  "u",  "s",  "s"
 	)
-	icon_state = "gezenan"
+	icon_state = "lizard"
 	default_priority = 90
 	mutual_understanding = list(
-		/datum/language/zohil_kalixcian = 70,
-		/datum/language/league_kalixcian = 65,
+		/datum/language/zohil_kalixcian = 90, // enough to sort of understand each other, but not perfectly
 	)

@@ -926,8 +926,14 @@
 /area/ship/crew/ccommons)
 "ky" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/drinks/beer,
-/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer/light{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/food/drinks/beer/light{
+	pixel_x = 7;
+	pixel_y = -3
+	},
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/wood/walnut,
 /area/ship/crew/ccommons)
@@ -998,7 +1004,10 @@
 /area/ship/hallway/aft)
 "lV" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer/light{
+	pixel_x = -2;
+	pixel_y = 6
+	},
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/wood/walnut,
 /area/ship/crew/ccommons)
@@ -1933,12 +1942,10 @@
 /area/ship/hallway/aft)
 "vA" = (
 /obj/docking_port/stationary{
-	dwidth = 20;
-	height = 31;
-	width = 41;
-	dir = 2;
-	disable_on_owner_ship_dock = 1;
-	dheight = 1
+	dwidth = 15;
+	height = 15;
+	width = 30;
+	dir = 2
 	},
 /turf/template_noop,
 /area/template_noop)

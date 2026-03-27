@@ -123,36 +123,21 @@
 #define RANDOM_HAIR_GRADIENT_STYLE "random_grad_style"
 #define RANDOM_HAIR_GRADIENT_COLOR "random_grad_color"
 
-//Limbs stuff
+//prosthetics stuff
 #define PROSTHETIC_NORMAL "normal"
 #define PROSTHETIC_AMPUTATED "amputated"
 #define PROSTHETIC_ROBOTIC "prosthetic"
 
 /// You cannot speak or understand this language whatsoever.
-#define LANGUAGE_UNKNOWN "Unknown"
+#define LANGUAGE_UNKNOWN "Unknown (0)"
 /// You cannot speak this language, but can recognize some of the words.
-#define LANGUAGE_FAMILIAR "Familiar"
-/// You are proficient enough with this language to get by but fail to pick up on nuances.
-#define LANGUAGE_CONVERSATIONAL "Conversational"
+#define LANGUAGE_RECOGNIZED "Recognized (1)"
+/// You are familiar with this language enough to sort of speak it, but cannot understand it very well.
+#define LANGUAGE_FAMILIAR "Familiar (2)"
 /// You are fluent in this language, and can both understand and speak it perfectly.
-#define LANGUAGE_FLUENT "Fluent"
+#define LANGUAGE_FLUENT "Fluent (3)"
 /// Maximum number of additional languages that can be selected.
 #define MAX_LANGUAGE_POINTS 4
-
-#define POINT_DISCOUNT_THRESHOLD_LOW 50
-#define POINT_DISCOUNT_THRESHOLD_HIGH 90
-#define MAXIMUM_POINT_DISCOUNT 2
-
-/// Index of the points cost of a level of understanding
-#define INDEX_POINT_COST 1
-/// Index of the intelligibility of a level of understanding
-#define INDEX_UNDERSTANDING 2
-
-//Eye scarring
-#define SCAR_RIGHT "Right"
-#define SCAR_LEFT "Left"
-#define SCAR_DOUBLE "Double"
-#define SCAR_RANDOM "Random"
 
 #define NOT_SYNTHETIC FALSE
 #define IS_SYNTHETIC TRUE

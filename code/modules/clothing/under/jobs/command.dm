@@ -15,15 +15,15 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations = DIGITIGRADE_VARIATION_NO_NEW_ICON | VOX_VARIATION
 
-/obj/item/clothing/under/rank/command/warra
-	icon_state = "cmd_warra"
+/obj/item/clothing/under/rank/command/nt
+	icon_state = "cmd_nt"
 	item_state = "b_suit"
 	roll_sleeves = TRUE
 
-/obj/item/clothing/under/rank/command/warra/skirt
+/obj/item/clothing/under/rank/command/nt/skirt
 	desc = "A standard command jumpskirt."
 	name = "command jumpskirt"
-	icon_state = "cmd_warra_skirt"
+	icon_state = "cmd_nt_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations = DIGITIGRADE_VARIATION_NO_NEW_ICON | VOX_VARIATION
 

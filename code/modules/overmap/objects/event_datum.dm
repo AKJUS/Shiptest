@@ -323,10 +323,6 @@
 		if(S.shuttle_port.is_in_shuttle_bounds(poor_crew))
 			poor_crew.playsound_local(poor_crew, THUNDER_SOUND, rand(min_damage, max_damage))
 
-	var/obj/machinery/power/cloak/cloaking_system = S.ship_modules[SHIPMODULE_CLOAKING]
-	if(cloaking_system?.cloak_active)
-		cloaking_system.set_cloak(FALSE)
-		cloaking_system.visible_message("[src] is overloaded by the electrical storm and shuts off!")
 
 /datum/overmap/event/electric/modify_emptyspace_mapgen(datum/overmap/dynamic/our_planet)
 	our_planet.weather_controller_type = /datum/weather_controller/shrouded
@@ -374,7 +370,7 @@
 
 /datum/overmap/event/nebula/process()
 	. = ..()
-	var/list/nearby_objects = get_nearby_overmap_objects(include_docked = TRUE)
+	var/list/nearby_objects = get_nearby_overmap_objects()
 	var/datum/virtual_level/ship_vlevel
 
 	for(var/datum/overmap/ship/controlled/ship as anything in affected_ships)
@@ -382,7 +378,8 @@
 
 			ship_vlevel = ship.shuttle_port.get_virtual_level()
 			affected_ships -= ship
-			REMOVE_TRAIT(ship, TRAIT_CLOAKED, REF(src))
+			ship.hidden = FALSE
+			ship.alter_token_appearance()
 
 			for(var/obj/machinery/light/light_to_mess in GLOB.machines)
 				if(light_to_mess.virtual_z() != ship_vlevel.id)
@@ -401,7 +398,8 @@
 	if(affected_ships.len == 0)
 		START_PROCESSING(SSfastprocess, src)
 	affected_ships += ship
-	ADD_TRAIT(ship, TRAIT_CLOAKED, REF(src))
+	ship.hidden = TRUE
+	ship.alter_token_appearance()
 
 
 	for(var/obj/machinery/light/light_to_mess in GLOB.machines)
@@ -442,10 +440,8 @@
 	if(!other_wormhole)
 		qdel(src)
 		return
-	if(current_overmap != other_wormhole.current_overmap)
-		S.move_overmaps(other_wormhole.current_overmap, other_wormhole.x, other_wormhole.y)
-	else
-		S.overmap_move(other_wormhole.x, other_wormhole.y)
+
+	S.overmap_move(other_wormhole.x, other_wormhole.y)
 	S.overmap_step(S.get_heading())
 
 //Carp "meteors" - throws carp at the ship

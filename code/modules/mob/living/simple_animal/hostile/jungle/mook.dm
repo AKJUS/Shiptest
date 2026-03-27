@@ -220,7 +220,8 @@
 	layer = BELOW_MOB_LAYER
 	pixel_x = -16
 	base_pixel_x = -16
-	pixel_z = -16
+	pixel_y = -16
+	base_pixel_y = -16
 	duration = 10
 
 #undef MOOK_ATTACK_NEUTRAL

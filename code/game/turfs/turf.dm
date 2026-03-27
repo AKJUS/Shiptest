@@ -372,15 +372,15 @@ GLOBAL_LIST_EMPTY(created_baseturf_lists)
 		return (mover.movement_type & PHASING) || (mover.pass_flags & pass_flags_self) // If they can phase through us, let them in. If not, don't.
 	return TRUE
 
-/turf/open/Entered(atom/movable/arrived)
-	. = ..()
+/turf/open/Entered(atom/movable/AM)
+	. =..()
 	//melting
-	if(isobj(arrived) && air?.return_temperature() > T0C)
-		var/obj/O = arrived
+	if(isobj(AM) && air?.return_temperature() > T0C)
+		var/obj/O = AM
 		if(O.obj_flags & FROZEN)
 			O.make_unfrozen()
-	if(!arrived.zfalling)
-		zFall(arrived)
+	if(!AM.zfalling)
+		zFall(AM)
 
 // Initializes the baseturfs list, given an optional "fake_baseturf_type".
 // If "fake_baseturf_type" is a list, then this turf's baseturfs are set to that list.

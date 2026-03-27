@@ -226,8 +226,7 @@ GLOBAL_DATUM_INIT(requests, /datum/request_manager, new)
 				to_chat(usr, "Request is not a paper! Check the office it was sent to")
 				return TRUE
 			var/obj/item/paper/request_message = request.additional_information
-			var/datum/component/writing/text_to_show = request_message.GetComponent(/datum/component/writing)
-			text_to_show.ui_interact(usr)
+			request_message.ui_interact(usr)
 			return TRUE
 
 /datum/request_manager/ui_data(mob/user)

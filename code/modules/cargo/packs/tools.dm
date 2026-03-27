@@ -23,13 +23,6 @@
 					/obj/item/clothing/glasses/meson/engine)
 	crate_name = "engineering gear crate"
 
-/datum/supply_pack/tools/command_radio
-	name = "Command Radio Crate"
-	desc = "Contains a specialty radio that can transmit radio signals at an enhanced volume."
-	contains = list(/obj/item/radio/command)
-	cost = 750
-	crate_name = "radio crate"
-
 /datum/supply_pack/tools/bodycamera
 	name = "Body Camera Crate"
 	desc = "Contains one portable camera, designed to help keep track of a working group at all times."
@@ -73,7 +66,7 @@
 		/obj/item/storage/bag/ore,
 		/obj/item/mining_scanner)
 	crate_name = "basic mining crate"
-	faction = /datum/faction/warra/ns_logi
+	faction = /datum/faction/nt/ns_logi
 
 /datum/supply_pack/tools/entrenching
 	name = "Entrenching Tool Crate"
@@ -121,7 +114,7 @@
 	cost = 750
 	contains = list(/obj/item/inducer)
 	crate_name = "inducer crate"
-	faction = /datum/faction/warra
+	faction = /datum/faction/nt
 
 /datum/supply_pack/tools/jetpack
 	name = "Jetpack Crate"
@@ -171,7 +164,7 @@
 	name = "Plasmacutter Crate"
 	desc = "Contains a plasmacutter, capable of rapidly breaking down hull."
 	cost = 2500
-	contains = list(/obj/item/plasmacutter)
+	contains = list(/obj/item/gun/energy/plasmacutter)
 	crate_name = "plasmacutter crate"
 
 /datum/supply_pack/tools/sledgehammer

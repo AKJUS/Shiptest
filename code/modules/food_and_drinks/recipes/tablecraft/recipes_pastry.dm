@@ -35,19 +35,29 @@
 	result = /obj/item/food/rofflewaffles
 	subcategory = CAT_PASTRY
 
-//shoalpockets
+//Donkpockets
 
-/datum/crafting_recipe/food/shoalpocket
+/datum/crafting_recipe/food/donkpocket
 	time = 15
-	name = "Shoalwich"
+	name = "Donk-pocket"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
 		/obj/item/food/meatball = 1
 	)
-	result = /obj/item/food/shoalpocket
+	result = /obj/item/food/donkpocket
 	subcategory = CAT_PASTRY
 
-/datum/crafting_recipe/food/shoalpocket/spicy
+/datum/crafting_recipe/food/dankpocket
+	time = 15
+	name = "Dank-pocket"
+	reqs = list(
+		/obj/item/food/pastrybase = 1,
+		/obj/item/food/grown/cannabis = 1
+	)
+	result = /obj/item/food/dankpocket
+	subcategory = CAT_PASTRY
+
+/datum/crafting_recipe/food/donkpocket/spicy
 	time = 15
 	name = "Spicy-pocket"
 	reqs = list(
@@ -55,10 +65,10 @@
 		/obj/item/food/meatball = 1,
 		/obj/item/food/grown/chili
 	)
-	result = /obj/item/food/shoalpocket/spicy
+	result = /obj/item/food/donkpocket/spicy
 	subcategory = CAT_PASTRY
 
-/datum/crafting_recipe/food/shoalpocket/teriyaki
+/datum/crafting_recipe/food/donkpocket/teriyaki
 	time = 15
 	name = "Teriyaki-pocket"
 	reqs = list(
@@ -66,10 +76,10 @@
 		/obj/item/food/meatball = 1,
 		/datum/reagent/consumable/soysauce = 3
 	)
-	result = /obj/item/food/shoalpocket/teriyaki
+	result = /obj/item/food/donkpocket/teriyaki
 	subcategory = CAT_PASTRY
 
-/datum/crafting_recipe/food/shoalpocket/pizza
+/datum/crafting_recipe/food/donkpocket/pizza
 	time = 15
 	name = "Pizza-pocket"
 	reqs = list(
@@ -77,17 +87,17 @@
 		/obj/item/food/meatball = 1,
 		/obj/item/food/grown/tomato = 1
 	)
-	result = /obj/item/food/shoalpocket/pizza
+	result = /obj/item/food/donkpocket/pizza
 	subcategory = CAT_PASTRY
 
-/datum/crafting_recipe/food/shoalpocket/berry
+/datum/crafting_recipe/food/donkpocket/berry
 	time = 15
 	name = "Berry-pocket"
 	reqs = list(
 		/obj/item/food/pastrybase = 1,
 		/obj/item/food/grown/berries = 1
 	)
-	result = /obj/item/food/shoalpocket/berry
+	result = /obj/item/food/donkpocket/berry
 	subcategory = CAT_PASTRY
 
 //Muffins

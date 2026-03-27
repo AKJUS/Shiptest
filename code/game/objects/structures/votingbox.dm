@@ -116,9 +116,7 @@
 		voted += voter_card
 		to_chat(user,span_notice("You cast your vote."))
 
-/obj/structure/votebox/proc/valid_vote(datum/component/writing/voting_slip)
-	if(!voting_slip)
-		return FALSE
+/obj/structure/votebox/proc/valid_vote(obj/item/paper/voting_slip)
 	if(voting_slip.get_total_length() > VOTE_TEXT_LIMIT)
 		return FALSE
 	for(var/datum/paper_input/text as anything in voting_slip.raw_text_inputs)
@@ -171,11 +169,10 @@
 	for(var/obj/item/paper/paper_content in contents)
 		if(i++ > MAX_VOTES)
 			break
-		var/datum/component/writing/vote = GetComponent(paper_content)
-		if(!valid_vote(vote))
+		if(!valid_vote(paper_content))
 			continue
 		var/full_vote_text = ""
-		for(var/datum/paper_input/text as anything in vote.raw_text_inputs)
+		for(var/datum/paper_input/text as anything in paper_content.raw_text_inputs)
 			full_vote_text += "[text.raw_text]<br>"
 
 		if(!results[full_vote_text])

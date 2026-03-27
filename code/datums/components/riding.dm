@@ -1,5 +1,3 @@
-//port https://github.com/tgstation/tgstation/pull/89320's refactor
-
 /datum/component/riding
 	var/last_vehicle_move = 0 //used for move delays
 	var/last_move_diagonal = FALSE

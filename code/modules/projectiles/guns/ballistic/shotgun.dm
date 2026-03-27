@@ -107,7 +107,7 @@
 	recoil = 1
 	recoil_unwielded = 4
 	wield_delay = 0.65 SECONDS
-	manufacturer = MANUFACTURER_NONE
+	manufacturer = MANUFACTURER_NANOTRASEN
 	semi_auto = TRUE
 
 	gunslinger_recoil_bonus = 1

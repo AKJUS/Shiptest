@@ -97,8 +97,13 @@
 
 ///Floats the movable up and down. Not a comsig proc.
 /datum/element/movetype_handler/proc/float(atom/movable/target)
-	DO_FLOATING_ANIM(target)
+	animate(target, pixel_y = 2, time = 10, loop = -1, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+	animate(pixel_y = -2, time = 10, loop = -1, flags = ANIMATION_RELATIVE)
 
 /// Stops the above. Also not a comsig proc.
 /datum/element/movetype_handler/proc/stop_floating(atom/movable/target)
-	STOP_FLOATING_ANIM(target)
+	var/final_pixel_y = target.base_pixel_y
+	if(isliving(target))
+		var/mob/living/living_target = target
+		final_pixel_y += living_target.get_standard_pixel_y_offset()
+	animate(target, pixel_y = final_pixel_y, time = 1 SECONDS)

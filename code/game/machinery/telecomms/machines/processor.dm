@@ -43,7 +43,7 @@
 	autolinkers = list("processor1") // processors are sort of isolated; they don't need backward links
 
 /obj/machinery/telecomms/processor/preset_two
-	id = "Makosso-Warra Communications Processor"
+	id = "Nanotrasen Communications Processor"
 	network = "tcommsat"
 	autolinkers = list("processor2")
 

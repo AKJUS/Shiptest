@@ -267,7 +267,7 @@
 	result = /obj/item/food/miras_sososi
 	subcategory = CAT_MEAT
 
-/datum/crafting_recipe/food/siti_miras
+/datum/crafting_recipe/food/miras_sososi
 	name = "Siti-Miras"
 	reqs = list(
 		/obj/item/food/meat/steak/miras = 1,
@@ -322,7 +322,7 @@
 	result = /obj/item/food/sososi_dofi
 	subcategory = CAT_MEAT
 
-/datum/crafting_recipe/food/dofi_nari
+/datum/crafting_recipe/food/sososi_dofi
 	name = "dofi-nari"
 	reqs = list(
 		/obj/item/food/meat/steak/dofitis = 1,

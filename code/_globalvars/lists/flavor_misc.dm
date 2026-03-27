@@ -39,7 +39,6 @@ GLOBAL_LIST_EMPTY(squid_face_list)
 GLOBAL_LIST_EMPTY(ipc_screens_list)
 GLOBAL_LIST_EMPTY(ipc_antennas_list)
 GLOBAL_LIST_EMPTY(ipc_tail_list)
-GLOBAL_LIST_EMPTY(alternative_body_list)
 GLOBAL_LIST_EMPTY(ipc_chassis_list)
 GLOBAL_LIST_INIT(ipc_brain_list, list("Posibrain", "Man-Machine Interface"))
 GLOBAL_LIST_EMPTY(spider_legs_list)
@@ -133,7 +132,7 @@ GLOBAL_LIST_INIT(ai_core_display_screens, sortList(list(
 	"Matrix",
 	"Monochrome",
 	"Murica",
-	"Makosso-Warra",
+	"Nanotrasen",
 	"Not Malf",
 	"President",
 	"Random",

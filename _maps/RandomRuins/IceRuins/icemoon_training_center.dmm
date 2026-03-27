@@ -2150,7 +2150,6 @@
 	pixel_x = 0;
 	pixel_y = -5
 	},
-/obj/item/reagent_containers/food/drinks/mead,
 /turf/open/floor/wood,
 /area/ruin/icemoon/training_facility/office_2)
 "kA" = (
@@ -2427,7 +2426,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/remains/human,
-/obj/item/clothing/head/warra/cap/security{
+/obj/item/clothing/head/nanotrasen/cap/security{
 	pixel_y = 9
 	},
 /turf/open/floor/plating/asteroid/icerock/cracked,
@@ -3924,10 +3923,10 @@
 "tf" = (
 /obj/machinery/suit_storage_unit/inherit/industrial,
 /obj/item/clothing/suit/space/pilot,
+/obj/item/clothing/head/helmet/space/pilot/random,
 /obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/item/clothing/head/helmet/space/pilot,
 /turf/open/floor/plasteel/tech,
 /area/ruin/icemoon/training_facility/mech_garage)
 "ti" = (
@@ -4343,7 +4342,7 @@
 /turf/open/floor/plating,
 /area/ruin/icemoon/training_facility/classroom)
 "vC" = (
-/obj/machinery/computer/monitor{
+/obj/machinery/computer/apc_control{
 	dir = 1
 	},
 /obj/effect/spawner/random/trash/crushed_can{
@@ -5316,7 +5315,7 @@
 /area/ruin/icemoon/training_facility/garage)
 "Ac" = (
 /obj/structure/statue/snow/snowman,
-/obj/item/clothing/head/warra/beret/security{
+/obj/item/clothing/head/nanotrasen/beret/security{
 	pixel_y = 11
 	},
 /turf/open/floor/plating/asteroid/snow/lit,
@@ -5370,6 +5369,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/ruin/icemoon/training_facility/classroom)
+"Ay" = (
+/obj/structure/table/greyscale,
+/obj/item/attachment/gun/flamethrower,
+/turf/open/floor/plating/asteroid/icerock/cracked,
+/area/ruin/icemoon/training_facility)
 "AA" = (
 /obj/effect/turf_decal/techfloor{
 	dir = 5
@@ -6367,10 +6371,6 @@
 "Ff" = (
 /turf/open/floor/plasteel/grimy,
 /area/ruin/icemoon/training_facility/dorms)
-"Fi" = (
-/mob/living/simple_animal/hostile/human/ramzi/melee/sawbones,
-/turf/open/floor/plating/rust,
-/area/ruin/icemoon/training_facility/medbay)
 "Fj" = (
 /obj/effect/turf_decal/techfloor{
 	dir = 8
@@ -7673,6 +7673,9 @@
 /area/ruin/icemoon/training_facility/dorms)
 "Lz" = (
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/human/ramzi/melee/machete{
+	name = "Ramzi Clique Sawbones"
+	},
 /turf/open/floor/plasteel/mono/white,
 /area/ruin/icemoon/training_facility/medbay)
 "LA" = (
@@ -8515,11 +8518,6 @@
 	},
 /turf/open/floor/plating/rust,
 /area/ruin/icemoon/training_facility/classroom)
-"PO" = (
-/obj/structure/table/greyscale,
-/obj/item/attachment/gun/flamethrower,
-/turf/open/floor/plating/asteroid/icerock/cracked,
-/area/ruin/icemoon/training_facility)
 "PP" = (
 /obj/structure/table/reinforced,
 /obj/effect/decal/cleanable/dirt,
@@ -9247,6 +9245,10 @@
 /obj/item/clothing/glasses/hud/security/sunglasses{
 	pixel_x = 0;
 	pixel_y = 12
+	},
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_x = 3;
+	pixel_y = 10
 	},
 /turf/open/floor/wood,
 /area/ruin/icemoon/training_facility/office_2)
@@ -13946,7 +13948,7 @@ qr
 tx
 Cd
 wr
-Fi
+ZU
 ZU
 rW
 qP
@@ -14825,7 +14827,7 @@ kk
 wN
 Bv
 kk
-PO
+Ay
 xj
 xj
 tB

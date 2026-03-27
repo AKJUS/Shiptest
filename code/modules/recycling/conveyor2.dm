@@ -52,13 +52,11 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	if(.)
 		operating = TRUE
 		update_appearance()
-		begin_processing()
+		begin_processing()                                              //WS Edit - Auto Conveyor Fix (Issue #331)
 
 // create a conveyor
 /obj/machinery/conveyor/Initialize(mapload, newdir, newid)
 	. = ..()
-	var/static/list/give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN)
-	AddElement(/datum/element/give_turf_traits, give_turf_traits)
 	if(newdir)
 		setDir(newdir)
 	if(newid)

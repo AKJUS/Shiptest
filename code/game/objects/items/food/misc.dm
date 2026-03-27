@@ -302,6 +302,3 @@
 	)
 	tastes = list("egg" = 1, "hints of spice" = 1)
 	foodtypes = MEAT | RAW
-
-/obj/item/food/mirasegg/make_dryable()
-	AddElement(/datum/element/dryable, /obj/item/food/reti/homemade)

@@ -74,6 +74,3 @@
 			return SOUTH
 		if(226 to 315)
 			return WEST
-
-// 180s an angle
-#define REVERSE_ANGLE(degrees) (SIMPLIFY_DEGREES(degrees + 180))

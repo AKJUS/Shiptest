@@ -385,21 +385,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Incinerator"
 	icon_state = "disposal"
 
-/area/ship/engineering/storage
-	name = "Engineering Storage Room"
-
-/area/ship/engineering/hallway
-	name = "Engineering Hallway"
-
-/area/ship/engineering/hallway/port
-	name = "Engineering Port Hallway"
-
-/area/ship/engineering/hallway/starboard
-	name = "Engineering Starboard Hallway"
-
-/area/ship/engineering/hallway/aft
-	name = "Engineering Aft Hallway"
-
 /// Security ///
 /area/ship/security
 	name = "Brig"
@@ -475,14 +460,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/ship/hallway/fore
 	name = "Fore Hallway"
-	icon_state = "hallF"
-
-/area/ship/hallway/fore/port
-	name = "Port Fore Hallway"
-	icon_state = "hallF"
-
-/area/ship/hallway/fore/starboard
-	name = "Starboard Fore Hallway"
 	icon_state = "hallF"
 
 /area/ship/hallway/starboard

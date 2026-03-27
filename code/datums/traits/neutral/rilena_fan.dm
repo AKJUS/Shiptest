@@ -5,7 +5,7 @@
 	mob_traits = list(TRAIT_FAN_RILENA)
 	gain_text = span_notice("You are a huge fan of a certain combination webcomic and bullet hell game.")
 	lose_text = span_danger("Suddenly, bullet hell games and webcomics don't seem all that interesting anymore...")
-	quirk_flags = QUIRK_HUMAN_ONLY | QUIRK_HIDE_FROM_SCAN
+	detectable = FALSE
 
 /datum/quirk/fan_rilena/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder

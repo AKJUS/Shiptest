@@ -5,9 +5,9 @@
 	ruin_type = RUINTYPE_JUNGLE
 
 /datum/map_template/ruin/jungle/syndicate
-	name = "Jungle ICW-era Bunker"
+	name = "Jungle Syndicate Bunker"
 	id = "syndicatebunkerjungle"
-	description = "An ICW-era nuclear bunker formerly operated by the Gorlex Marauders, now inhabited by the Ramzi Clique."
+	description = "A small bunker owned by the Syndicate."
 	suffix = "jungle_syndicate.dmm"
 	ruin_tags = list(RUIN_TAG_MEDIUM_COMBAT, RUIN_TAG_MEDIUM_LOOT, RUIN_TAG_LIVEABLE)
 

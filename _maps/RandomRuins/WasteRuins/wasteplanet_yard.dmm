@@ -318,7 +318,7 @@
 	pixel_y = 19
 	},
 /obj/structure/curtain,
-/obj/item/soap/warra,
+/obj/item/soap/nanotrasen,
 /turf/open/floor/plasteel/dark/wasteplanet,
 /area/ruin/wasteplanet/wasteplanet_shipbreaking/ship)
 "dv" = (

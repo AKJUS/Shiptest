@@ -351,7 +351,7 @@
 /area/ruin/moon/moonbase/refinery)
 "cM" = (
 /obj/structure/closet/toolcloset/empty,
-/obj/item/plasmacutter,
+/obj/item/gun/energy/plasmacutter,
 /obj/item/storage/toolbox/electrical,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/clothing/glasses/welding,
@@ -897,6 +897,9 @@
 	pixel_x = -10;
 	pixel_y = 6
 	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line{
 	dir = 4
 	},
@@ -941,6 +944,9 @@
 "gY" = (
 /obj/structure/railing/thin/corner{
 	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
 	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line{
 	dir = 1
@@ -1392,6 +1398,7 @@
 /area/ruin/moon/moonbase/cargo)
 "kN" = (
 /obj/structure/railing/thin/corner,
+/obj/effect/turf_decal/siding/thinplating,
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 8
@@ -1399,6 +1406,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ruin/moon/moonbase/dorms)
 "kU" = (
+/obj/effect/turf_decal/siding/thinplating/corner,
 /obj/effect/turf_decal/trimline/transparent/blue/filled/corner,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 5
@@ -1802,6 +1810,9 @@
 /turf/open/floor/plasteel/tech,
 /area/ruin/moon/moonbase/refinery)
 "oO" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line{
 	dir = 4
 	},
@@ -2870,6 +2881,7 @@
 /obj/structure/railing/thin/corner{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/thinplating,
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line,
 /obj/machinery/light/directional/east,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -3039,6 +3051,9 @@
 /obj/structure/railing/thin/corner{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line{
 	dir = 1
 	},
@@ -3072,6 +3087,9 @@
 /turf/open/floor/plasteel/mono/dark,
 /area/ruin/moon/moonbase/engineering)
 "Bz" = (
+/obj/effect/turf_decal/siding/thinplating/corner{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/corner{
 	dir = 4
 	},
@@ -4476,6 +4494,9 @@
 /obj/structure/railing/thin/corner{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 1
+	},
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line{
 	dir = 1
 	},
@@ -4647,6 +4668,7 @@
 /obj/structure/railing/thin/corner{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/thinplating,
 /obj/effect/turf_decal/trimline/transparent/blue/filled/line,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/tech/grid,

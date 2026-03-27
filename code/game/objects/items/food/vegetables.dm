@@ -40,14 +40,15 @@
 // Potatoes
 /obj/item/food/loaded_baked_potato
 	name = "loaded baked potato"
-	desc = "A potato that's been cut and spread down the middle, then filled with cheese and baked."
+	desc = "A potato that's been cut and spread down the middle, then filled with toppings and baked."
 	icon_state = "loadedbakedpotato"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
+		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("baked potato" = 1, "cheese" = 1)
-	foodtypes = VEGETABLES | DAIRY
+	tastes = list("baked potato" = 1, "bacon" = 1, "cheese" = 1, "cabbage" = 1)
+	foodtypes = VEGETABLES | DAIRY | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/loaded_miras_potato

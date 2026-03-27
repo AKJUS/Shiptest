@@ -867,11 +867,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/docking_port/mobile{
-	dir = 8;
-	launch_status = 0;
-	preferred_direction = 4
-	},
 /turf/open/floor/engine/hull/reinforced/interior,
 /area/ship/engineering/communications/room)
 "nz" = (
@@ -1001,19 +996,23 @@
 	},
 /obj/item/bodycamera{
 	pixel_y = 6;
-	pixel_x = -6
+	pixel_x = -9
 	},
 /obj/item/bodycamera{
 	pixel_y = 6;
-	pixel_x = 6
+	pixel_x = 1
 	},
 /obj/item/bodycamera{
 	pixel_y = 2;
-	pixel_x = -6
+	pixel_x = -9
 	},
 /obj/item/bodycamera{
 	pixel_y = 2;
-	pixel_x = 6
+	pixel_x = 1
+	},
+/obj/item/multitool{
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/tech/grid,
@@ -2022,6 +2021,11 @@
 	picked_color = "Lime"
 	},
 /obj/structure/catwalk,
+/obj/docking_port/mobile{
+	dir = 8;
+	launch_status = 0;
+	preferred_direction = 4
+	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
 "EO" = (
@@ -3471,12 +3475,10 @@
 "We" = (
 /obj/docking_port/stationary{
 	dir = 4;
-	dwidth = 30;
-	height = 60;
-	width = 60;
-	name = "Aspo Forward Dock";
-	disable_on_owner_ship_dock = 1;
-	dheight = 1
+	dwidth = 15;
+	height = 15;
+	width = 30;
+	name = "Aspo Forward Dock"
 	},
 /turf/template_noop,
 /area/template_noop)

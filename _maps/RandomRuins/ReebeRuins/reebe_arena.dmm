@@ -140,6 +140,11 @@
 /obj/structure/grille,
 /turf/open/floor/bronze,
 /area/ruin/reebe)
+"HX" = (
+/obj/structure/grille,
+/obj/structure/window/bronze/fulltile,
+/turf/template_noop,
+/area/ruin/reebe)
 "Ib" = (
 /obj/structure/table/bronze,
 /obj/item/storage/firstaid/regular,
@@ -328,7 +333,7 @@ pm
 pm
 pm
 De
-De
+HX
 IC
 IC
 IC

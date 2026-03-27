@@ -37,7 +37,7 @@
 		return
 
 	. += "crittercrate_door"
-	if(GetComponent(/datum/component/writing))
+	if(manifest)
 		. += "manifest"
 
 /obj/structure/closet/crate/critter/return_air()

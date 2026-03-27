@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/ooccolor = "#c43b23"
 	var/asaycolor = "#ff4500"			//This won't change the color for current admins, only incoming ones.
 	/// If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit
-	var/brief_outfit = /datum/outfit/job/warra/captain
+	var/brief_outfit = /datum/outfit/job/nanotrasen/captain
 	var/enable_tips = TRUE
 	var/tip_delay = 500 //tip delay in milliseconds
 
@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							BODY_ZONE_R_LEG = PROSTHETIC_NORMAL,
 						)
 	var/fbp = FALSE
-	var/scarred_eye_side = SCAR_RIGHT
+	var/phobia = "spiders"
 	var/list/alt_titles_preferences = list()
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -179,12 +179,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/datum/language/native_language = /datum/language/galactic_common
 
 	/// Associated list with language levels of understanding and their point costs.
-	var/static/list/list/language_level_data = list(
-		LANGUAGE_UNKNOWN = list(0, 0),
-		LANGUAGE_FAMILIAR = list(1, POINT_DISCOUNT_THRESHOLD_LOW),
-		LANGUAGE_CONVERSATIONAL = list(2, POINT_DISCOUNT_THRESHOLD_HIGH),
-		LANGUAGE_FLUENT = list(3, 100),
-	)
+	var/static/list/language_level_costs = list(LANGUAGE_UNKNOWN = 0, LANGUAGE_RECOGNIZED = 1, LANGUAGE_FAMILIAR = 2, LANGUAGE_FLUENT = 3)
 
 	// 0 = character settings, 1 = game preferences
 	var/current_tab = 0
@@ -397,7 +392,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<tr><td><b>[get_language_point_balance()]</b> points left.</td></tr>"
 			dat += "<tr><td><a href='byond://?_src_=prefs;preference=native_language;task=input'><b>Native Language: </b>[initial(native_language.name)]</a></td></tr>"
 			if(!learned_languages?.len)
-				learned_languages = sanitize_learned_languages()
+				init_learned_languages()
 			for(var/datum/language/lang_type as anything in learned_languages)
 				if(lang_type == native_language)
 					continue
@@ -897,12 +892,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
-			//TGUI preferences when
-			if("Scarred Eye" in all_quirks)
+			//Adds a thing to select which phobia because I can't be assed to put that in the quirks window
+			if("Phobia" in all_quirks)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
-				dat += "<h3>Scarred Eye</h3>"
-				dat += "<a href='byond://?_src_=prefs;preference=scarred_eye_side;task=input'>[scarred_eye_side]</a><BR>"
+				dat += "<h3>Phobia</h3>"
+
+				dat += "<a href='byond://?_src_=prefs;preference=phobia;task=input'>[phobia]</a><BR>"
+
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
@@ -1431,7 +1428,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/handled_conflicts = list()
 	for(var/quirk_name in SSquirks.quirks)
 		var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
-		if((quirk_type::quirk_flags & QUIRK_MOODLET_BASED) && CONFIG_GET(flag/disable_human_mood))
+		if(initial(quirk_type.mood_quirk) && CONFIG_GET(flag/disable_human_mood))
 			quirk_conflicts[quirk_name] = "Mood and mood quirks are disabled."
 			if(!handled_conflicts["mood"])
 				handle_quirk_conflict("mood", null, user)
@@ -1476,7 +1473,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					all_quirks_new -= quirk_name
 					balance += initial(quirk_type.value)
 			if("mood")
-				if(quirk_type::quirk_flags & QUIRK_MOODLET_BASED)
+				if(initial(quirk_type.mood_quirk))
 					all_quirks_new -= quirk_name
 					balance += initial(quirk_type.value)
 			if("blacklist")
@@ -1527,52 +1524,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(SSquirks.quirk_points[q] > 0)
 			.++
 
-/datum/preferences/proc/sanitize_learned_languages(list/language_list)
-	var/list/new_language_list = list()
+/datum/preferences/proc/init_learned_languages()
+	learned_languages = list()
 	for(var/datum/language/lang_type as anything in subtypesof(/datum/language))
-		if(!(initial(lang_type.flags) & ROUNDSTART_LANGUAGE))
-			continue
-		if(!(lang_type in language_list))
-			new_language_list[lang_type] = LANGUAGE_UNKNOWN
-			continue
-		new_language_list[lang_type] = language_list[lang_type]
-	return new_language_list
+		if(initial(lang_type.flags) & ROUNDSTART_LANGUAGE)
+			learned_languages[lang_type] = LANGUAGE_UNKNOWN
 
 /datum/preferences/proc/get_language_point_balance()
 	var/points_balance = MAX_LANGUAGE_POINTS
-	var/list/checked_langs = list()
 	for(var/datum/language/lang_type as anything in learned_languages)
 		if(lang_type == native_language)
 			continue // this should happen but just in case
-		var/level = learned_languages[lang_type]
-		if(level == LANGUAGE_UNKNOWN)
-			continue
-		points_balance -= language_level_data[learned_languages[lang_type]][INDEX_POINT_COST]
-		var/discount = get_intelligibility_discount(lang_type, native_language)
-		if(discount < MAXIMUM_POINT_DISCOUNT)
-			for(var/datum/language/mutual_type as anything in checked_langs)
-				if(level != LANGUAGE_FLUENT && learned_languages[mutual_type] != LANGUAGE_FLUENT)
-					continue
-				discount = max(discount, get_intelligibility_discount(lang_type, mutual_type))
-				if(discount >= MAXIMUM_POINT_DISCOUNT)
-					break
-		points_balance += discount
-		checked_langs += lang_type
+		points_balance -= language_level_costs[learned_languages[lang_type]]
 	if("Trilingual" in all_quirks)
 		points_balance += 2
 	if("Monolingual" in all_quirks)
 		points_balance -= 2
 	return points_balance
-
-/datum/preferences/proc/get_intelligibility_discount(datum/language/first_type, datum/language/second_type)
-	var/datum/language/first_instance = GLOB.language_datum_instances[first_type]
-	var/datum/language/second_instance = GLOB.language_datum_instances[second_type]
-	var/intelligibility = max(first_instance.mutual_understanding?[second_type], second_instance.mutual_understanding?[first_type])
-	if(intelligibility >= POINT_DISCOUNT_THRESHOLD_HIGH)
-		return 2
-	if(intelligibility >= POINT_DISCOUNT_THRESHOLD_LOW)
-		return 1
-	return 0
 
 /datum/preferences/Topic(href, href_list, hsrc)			//yeah, gotta do this I guess..
 	. = ..()
@@ -2181,29 +2149,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(selected_lang.type == native_language) // wuh oh
 						CRASH("[usr] attempted to change level of understanding for [selected_lang] despite it being their native language!")
 					if(selected_lang && (selected_lang.flags & ROUNDSTART_LANGUAGE)) // no using html exploits to learn codespeak
-						var/discount = get_intelligibility_discount(selected_lang.type, native_language)
-						if(discount < MAXIMUM_POINT_DISCOUNT)
-							for(var/datum/language/lang_type as anything in learned_languages)
-								if(learned_languages[lang_type] != LANGUAGE_FLUENT)
-									continue
-								discount = max(discount, get_intelligibility_discount(selected_lang.type, lang_type))
-								if(discount >= MAXIMUM_POINT_DISCOUNT)
-									break
-						var/list/level_options = list()
-						for(var/option in language_level_data)
-							var/cost = language_level_data[option][INDEX_POINT_COST]
-							if(cost && cost <= discount)
-								continue
-							level_options["[option] ([cost ? (cost - discount) : 0])"] = option
-						var/understanding = level_options[tgui_input_list(
-							user,
-							"Select level of understanding for [selected_lang.name].[discount ? "Discounted by [discount] points due to mutual intelligibility." : ""]",
-							"Learn Language",
-							level_options,
-						)]
+						var/understanding = tgui_input_list(user, "Select level of understanding:", "Learn Language", language_level_costs)
 						if(!understanding)
 							return
-						if(!(understanding in language_level_data))
+						if(!(understanding in language_level_costs))
 							CRASH("[usr] attempted to set level of understanding for [selected_lang.type] to \"[understanding]\"")
 						var/old_value = learned_languages[selected_lang.type]
 						learned_languages[selected_lang.type] = understanding
@@ -2212,7 +2161,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(usr, span_warning("You don't have enough language points!"))
 
 				if("reset_languages")
-					learned_languages = sanitize_learned_languages()
+					init_learned_languages()
 
 				if ("clientfps")
 					var/desiredfps = input(user, "Choose your desired fps. (0 = default, 60 FPS))", "Character Preference", clientfps)  as null|num //WS Edit - Client FPS Tweak -
@@ -2234,15 +2183,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(pickedPDAColor)
 						pda_color = pickedPDAColor
 
-				if("scarred_eye_side")
-					var/scar_side = tgui_input_list(
-						user,
-						"Which eye is scarred?",
-						"Quirk Preference",
-						list(SCAR_LEFT, SCAR_RIGHT, SCAR_DOUBLE, SCAR_RANDOM),
-					)
-					if(scar_side)
-						scarred_eye_side = scar_side
+				if("phobia")
+					var/phobiaType = input(user, "What is your character scared of?", "Quirk Preference", phobia) as null|anything in SStraumas.phobia_types
+					if(phobiaType)
+						phobia = phobiaType
 
 				if("generic_adjective")
 					var/selectAdj
@@ -2287,21 +2231,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/list/limb_options = list(PROSTHETIC_NORMAL, PROSTHETIC_ROBOTIC)
 						if(limb != BODY_ZONE_CHEST && limb != BODY_ZONE_HEAD)
 							limb_options.Add(PROSTHETIC_AMPUTATED) // starting without a head or chest causes instant death, must be disallowed
-
+						var/datum/sprite_accessory/ipc_chassis/limb_style
 						var/obj/item/bodypart/part_candidate
-						var/datum/sprite_accessory/body/limb_style
-						for(var/body in GLOB.alternative_body_list)
-							limb_style = GLOB.alternative_body_list[body]
-							part_candidate = limb_style.replacement_bodyparts[limb]
-							if(isnull(part_candidate))
-								continue
-							if(length(limb_style.allowed_species))
-								if(!(pref_species.type in limb_style.allowed_species))
-									continue
+						for(var/chassis in GLOB.ipc_chassis_list)
+							limb_style = GLOB.ipc_chassis_list[chassis]
+							part_candidate = limb_style.chassis_bodyparts[limb]
 							if(!(pref_species.bodytype & initial(part_candidate.bodytype))) // don't allow vox and kepori to select limbs that aren't compatible
 								continue
-							limb_options.Add(body)
-
+							limb_options.Add(chassis)
 						var/status = input(user, "You are modifying your [parse_zone(limb)], what should it be changed to?", "Character Preference", prosthetic_limbs[limb]) in limb_options
 						if(status)
 							prosthetic_limbs[limb] = status
@@ -2687,8 +2624,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					qdel(old_part)
 				character.regenerate_limb(pros_limb, robotic = TRUE)
 			else
-				var/datum/sprite_accessory/body/limb_style = GLOB.alternative_body_list[prosthetic_limbs[pros_limb]]
-				var/obj/item/bodypart/new_part = limb_style.replacement_bodyparts[pros_limb]
+				var/datum/sprite_accessory/ipc_chassis/limb_style = GLOB.ipc_chassis_list[prosthetic_limbs[pros_limb]]
+				var/obj/item/bodypart/new_part = limb_style.chassis_bodyparts[pros_limb]
 				new_part = new new_part()
 				if(old_part)
 					old_part.drop_limb(TRUE)
@@ -2698,12 +2635,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					prosthetic_limbs[pros_limb] = PROSTHETIC_NORMAL
 					character.regenerate_limb(pros_limb, robotic = fbp)
 					continue
-				// species that don't use mutant colors normally should still be able to color prosthetics that do
-				if(new_part.should_draw_greyscale)
+				if(new_part.should_draw_greyscale) // species that don't use mutant colors normally should still be able to color prosthetics that do
 					new_part.draw_color = features["mcolor"]
-				if(new_part.overlay_use_primary_color || new_part.overlay2_use_primary_color)
-					new_part.species_color = features["mcolor"]
-				if(new_part.overlay_icon_state || new_part.overlay2_icon_state)
+				if(new_part.overlay_icon_state)
 					new_part.species_secondary_color = features["mcolor2"]
 				new_part.replace_limb(character, TRUE)
 				new_part.update_limb(is_creating = TRUE)
@@ -2729,24 +2663,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.set_mob_height(GLOB.height_filters[height_filter])
 
 	if(!character_setup && get_language_point_balance() < 0)
-		learned_languages = sanitize_learned_languages() // no exploits allowed
+		init_learned_languages() // no exploits allowed
 	character.grant_language(native_language)
 	character.get_language_holder().selected_language = native_language
 	for(var/datum/language/lang_type as anything in learned_languages)
 		if(lang_type == native_language)
 			continue
-		var/understanding = language_level_data[learned_languages[lang_type]][INDEX_UNDERSTANDING]
-		switch(understanding)
-			if(100 to INFINITY)
+		switch(learned_languages[lang_type])
+			if(LANGUAGE_FLUENT)
 				character.grant_language(lang_type)
-			if(POINT_DISCOUNT_THRESHOLD_HIGH to 100)
+			if(LANGUAGE_FAMILIAR)
 				character.grant_language(lang_type, SPOKEN_LANGUAGE)
 				character.remove_language(lang_type, UNDERSTOOD_LANGUAGE)
-				character.grant_partial_language(lang_type, understanding)
-			if(POINT_DISCOUNT_THRESHOLD_LOW to POINT_DISCOUNT_THRESHOLD_HIGH)
+				character.grant_partial_language(lang_type, 80)
+			if(LANGUAGE_RECOGNIZED)
 				character.remove_language(lang_type)
-				character.grant_partial_language(lang_type, understanding)
-			if(0 to POINT_DISCOUNT_THRESHOLD_LOW)
+				character.grant_partial_language(lang_type, 40)
+			if(LANGUAGE_UNKNOWN)
 				character.remove_language(lang_type)
 
 /datum/preferences/proc/get_default_name(name_id)

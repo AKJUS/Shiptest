@@ -77,10 +77,7 @@
 			continue
 
 		serialized["ref"] = REF(mob_poi)
-		if(!mob_poi.real_name)
-			serialized["full_name"] = mob_poi.name
-		else
-			serialized["full_name"] = mob_poi.real_name
+		serialized["full_name"] = mob_poi.real_name
 		serialized["name"] = mob_poi.name
 		serialized["job"] = mob_poi.job
 		if(number_of_orbiters)

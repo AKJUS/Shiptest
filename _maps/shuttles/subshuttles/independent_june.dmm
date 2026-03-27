@@ -161,28 +161,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship/bridge)
-"k" = (
-/obj/effect/turf_decal/techfloor{
-	dir = 1
-	},
-/obj/effect/turf_decal/steeldecal/steel_decals_central4,
-/obj/effect/turf_decal/techfloor/hole/right{
-	dir = 1
-	},
-/obj/effect/turf_decal/spline/fancy/opaque/black{
-	dir = 8
-	},
-/obj/effect/turf_decal/techfloor/corner{
-	dir = 1
-	},
-/obj/docking_port/mobile{
-	dir = 4;
-	name = "June-class Dropship";
-	preferred_direction = 4;
-	port_direction = 2
-	},
-/turf/open/floor/plasteel/tech/grid,
-/area/ship/bridge)
 "l" = (
 /obj/effect/turf_decal/techfloor{
 	dir = 1
@@ -227,11 +205,21 @@
 /obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central4,
+/obj/effect/turf_decal/techfloor/hole/right{
+	dir = 1
+	},
 /obj/effect/turf_decal/spline/fancy/opaque/black{
 	dir = 8
 	},
 /obj/effect/turf_decal/techfloor/corner{
 	dir = 1
+	},
+/obj/docking_port/mobile{
+	dir = 8;
+	name = "June-class Dropship";
+	preferred_direction = 8;
+	port_direction = 2
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
@@ -619,7 +607,7 @@
 g
 W
 g
-k
+r
 r
 r
 r

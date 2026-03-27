@@ -152,4 +152,3 @@
 
 /mob/living/proc/reset_shocked()
 	flags_1 &= ~ SHOCKED_1
-

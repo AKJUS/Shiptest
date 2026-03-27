@@ -113,10 +113,6 @@
 
 //Misc
 
-/datum/gear/hat/brimmed
-	display_name = "brimmed hat, colorable"
-	path = /obj/item/clothing/head/brimmed
-
 /datum/gear/hat/that
 	display_name = "top hat"
 	path = /obj/item/clothing/head/that

@@ -1,52 +1,52 @@
 //Interceptor Crash Site
 
 /area/ruin/jungle/interceptor/crashsite
-	name = "Makosso-Warra Interceptor Crashsite"
+	name = "Nanotrasen Interceptor Crashsite"
 	icon_state = "yellow"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/afthall
-	name = "MWSV Retribution Aft Hall"
+	name = "NTSV Retribution Aft Hall"
 	icon_state = "hallA"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/porthall
-	name = "MWSV Retribution Port Hall"
+	name = "NTSV Retribution Port Hall"
 	icon_state = "hallP"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/starhall
-	name = "MWSV Retribution Starbard Hall"
+	name = "NTSV Retribution Starbard Hall"
 	icon_state = "hallS"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/forehall
-	name = "MWSV Retribution Fore Hall"
+	name = "NTSV Retribution Fore Hall"
 	icon_state = "hallF"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/bridge
-	name = "MWSV Retribution Bridge"
+	name = "NTSV Retribution Bridge"
 	icon_state = "bridge"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/security
-	name = "MWSV Retribution Security"
+	name = "NTSV Retribution Security"
 	icon_state = "security"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/crewquarters
-	name = "MWSV Retribution Crewquarters"
+	name = "NTSV Retribution Crewquarters"
 	icon_state = "crew_quarters"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/starlauncherone
-	name = "MWSV Retribution Starboard Launcher One"
+	name = "NTSV Retribution Starboard Launcher One"
 	icon_state = "red"
 	always_unpowered = TRUE
 
 /area/ruin/jungle/interceptor/starlaunchertwo
-	name = "MWSV Retribution Starboard Launcher Two"
+	name = "NTSV Retribution Starboard Launcher Two"
 	icon_state = "red"
 	always_unpowered = TRUE
 
@@ -128,38 +128,11 @@
 // Syndicate fort
 
 /area/ruin/jungle/syndifort
-	name = "Marauder Bunker"
+	name = "Syndicate Fort"
 	icon_state = "green"
 
-/area/ruin/jungle/syndifort/electrical
-	name = "Marauder Bunker Electrical"
-	icon_state = "yellow"
-
-/area/ruin/jungle/syndifort/atmos
-	name = "Marauder Bunker Air Filtration"
-
-/area/ruin/jungle/syndifort/canteen
-	name = "Marauder Bunker Canteen"
-	icon_state = "crew_quarters"
-
-/area/ruin/jungle/syndifort/dorms
-	name = "Marauder Bunker Dorms"
-	icon_state = "crew_quarters"
-
-/area/ruin/jungle/syndifort/armory
-	name = "Marauder Bunker Armory"
-	icon_state = "red"
-
-/area/ruin/jungle/syndifort/storage
-	name = "Marauder Bunker Storage Room"
-	icon_state = "supply"
-
-/area/ruin/jungle/syndifort/medical
-	name = "Marauder Bunker Infirmary"
-	icon_state = "blue"
-
 /area/ruin/jungle/syndifort/jerry
-	name = "Marauder Bunker Control Room"
+	name = "Syndicate Fort Tower"
 	icon_state = "bridge"
 
 // Cave Crew

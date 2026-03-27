@@ -14,17 +14,15 @@
 
 /obj/structure/closet/crate/large/attack_hand(mob/user)
 	add_fingerprint(user)
-	var/datum/component/writing/manifest = GetComponent(/datum/component/writing)
 	if(manifest)
-		tear_manifest(user, manifest)
+		tear_manifest(user)
 	else
 		to_chat(user, span_warning("You need a crowbar to pry this open!"))
 
 /obj/structure/closet/crate/large/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_CROWBAR)
-		var/datum/component/writing/manifest = GetComponent(/datum/component/writing)
 		if(manifest)
-			tear_manifest(user, manifest)
+			tear_manifest(user)
 
 		user.visible_message(
 			span_notice("[user] pries \the [src] open."), \

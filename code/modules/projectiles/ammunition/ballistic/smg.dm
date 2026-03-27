@@ -6,7 +6,6 @@
 	icon_state = "rifle-steel"
 	caliber = "5.7x39mm"
 	projectile_type = /obj/projectile/bullet/c57x39mm
-	stack_size = 20
 
 /obj/item/ammo_casing/c57x39mm/ap
 	name = "5.7x39mm armor piercing bullet casing"
@@ -34,7 +33,7 @@
 	icon_state = "rifle-brass"
 	caliber = "4.6x30mm"
 	projectile_type = /obj/projectile/bullet/c46x30mm
-	stack_size = 20
+	stack_size = 15
 
 /obj/item/ammo_casing/c46x30mm/recycled
 	name = "4.6x30mm recycled bullet casing"
@@ -77,7 +76,6 @@
 	icon_state = "caseless"
 	caliber = "4.73x33mm caseless"
 	projectile_type = /obj/projectile/bullet/c47x33mm
-	stack_size = 12
 
 // 5.56mm HITP caseless (Pistole C)
 

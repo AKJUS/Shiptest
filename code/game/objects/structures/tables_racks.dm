@@ -42,11 +42,6 @@
 	/// Whether or not this table can actually be flipped. TODO: Make setting flipped_table_type to null do this instead and remove this var
 	var/can_flip = TRUE
 
-/obj/structure/table/Initialize()
-	. = ..()
-	var/static/list/give_turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_TURF_IGNORE_SLIPPERY, TRAIT_IMMERSE_STOPPED)
-	AddElement(/datum/element/give_turf_traits, give_turf_traits)
-
 /obj/structure/table/examine(mob/user)
 	. = ..()
 	. += deconstruction_hints(user)
@@ -315,7 +310,7 @@
 ///Table on wheels
 /obj/structure/table/rolling
 	name = "Rolling table"
-	desc = "A Makosso-Warra brand \"Rolly poly\" rolling table. It can and will move."
+	desc = "A NT brand \"Rolly poly\" rolling table. It can and will move."
 	anchored = FALSE
 	smoothing_flags = NONE
 	smoothing_groups = null
@@ -564,24 +559,23 @@
 	else
 		return span_notice("The top cover is firmly <b>welded</b> on.")
 
-/obj/structure/table/reinforced/welder_act(mob/living/user, obj/item/tool, list/modifiers)
-	. = ..()
-	if(. & COMPONENT_BLOCK_TOOL_ATTACK)
-		return
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		if(!tool.tool_start_check(user, src, amount = 0))
-			return COMPONENT_BLOCK_TOOL_ATTACK
+/obj/structure/table/reinforced/attackby(obj/item/W, mob/user, params)
+	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HELP)
+		if(!W.tool_start_check(user, src, amount=0))
+			return
+
 		if(deconstruction_ready)
 			to_chat(user, span_notice("You start strengthening the reinforced table..."))
-			if(tool.use_tool(src, user, 5 SECONDS, volume = 50))
+			if (W.use_tool(src, user, 50, volume=50))
 				to_chat(user, span_notice("You strengthen the table."))
 				deconstruction_ready = 0
 		else
 			to_chat(user, span_notice("You start weakening the reinforced table..."))
-			if(tool.use_tool(src, user, 5 SECONDS, volume = 50))
+			if (W.use_tool(src, user, 50, volume=50))
 				to_chat(user, span_notice("You weaken the table."))
 				deconstruction_ready = 1
-		return COMPONENT_BLOCK_TOOL_ATTACK
+	else
+		. = ..()
 
 /obj/structure/table/bronze
 	name = "bronze table"
@@ -699,18 +693,15 @@
 	if(O.loc != src.loc)
 		step(O, get_dir(O, src))
 
-/obj/structure/rack/wrench_act(mob/living/user, obj/item/tool, list/modifiers)
-	. = ..()
-	if(. & COMPONENT_BLOCK_TOOL_ATTACK)
-		return
-	if(!(flags_1 & NODECONSTRUCT_1) && LAZYACCESS(modifiers, RIGHT_CLICK))
-		tool.play_tool_sound(src)
-		deconstruct(TRUE)
-		return COMPONENT_BLOCK_TOOL_ATTACK
-
 /obj/structure/rack/attackby(obj/item/W, mob/user, params)
-	if(user.a_intent != INTENT_HARM && user.transferItemToLoc(W, drop_location(), silent = FALSE))
-		var/list/modifiers = params2list(params)
+	var/list/modifiers = params2list(params)
+	if (W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1) && user.a_intent != INTENT_HELP)
+		W.play_tool_sound(src)
+		deconstruct(TRUE)
+		return
+	if(user.a_intent == INTENT_HARM)
+		return ..()
+	if(user.transferItemToLoc(W, drop_location(), silent = FALSE))
 		//Center the icon where the user clicked.
 		if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
 			return
@@ -718,7 +709,6 @@
 		W.pixel_x = clamp(text2num(LAZYACCESS(modifiers, ICON_X)) - 16, -(world.icon_size/2), world.icon_size/2)
 		W.pixel_y = clamp(text2num(LAZYACCESS(modifiers, ICON_Y)) - 16, -(world.icon_size/2), world.icon_size/2)
 		return TRUE
-	return ..()
 
 /obj/structure/rack/attack_paw(mob/living/user)
 	attack_hand(user)

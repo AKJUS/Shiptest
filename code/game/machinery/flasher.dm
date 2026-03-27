@@ -119,7 +119,7 @@
 		if (get_dist(src, L) > range)
 			continue
 
-		if(L.flash_act(affect_silicon = 1) & FLASH_EFFECT)
+		if(L.flash_act(affect_silicon = 1))
 			L.Paralyze(strength)
 			flashed = TRUE
 

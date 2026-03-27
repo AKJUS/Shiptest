@@ -198,7 +198,7 @@
 		owner.adjust_fire_stacks(20)
 		owner.ignite_mob()
 		owner.adjustFireLoss(25)
-		ADD_TRAIT(src, TRAIT_ORGAN_FAILING, DAMAGE_TRAIT)
+		organ_flags |= ORGAN_FAILING
 
 
 /obj/item/organ/cyberimp/arm/gun/laser

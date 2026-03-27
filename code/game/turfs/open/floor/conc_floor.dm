@@ -288,8 +288,8 @@
 	return ..()
 
 /turf/open/floor/concrete/pavement
-	name = "strip of pavement"
-	desc = "Hot, coarse pavement. Preferred for roadways, as vehicles are generally quieter driven on this than on traditional concrete."
+	name = "pavement"
+	desc = "The hot, coarse, and somewhat pavement. Vehicles driven on this are generally quiter than on traditional concrete, and is prefered for roadways."
 	icon_state = "pavement_1"
 	base_icon_state = "pavement"
 	broken_states = null

@@ -237,13 +237,18 @@
 	holdingitems -= O
 	qdel(O)
 
+/obj/machinery/reagentgrinder/proc/shake_for(duration)
+	var/offset = prob(50) ? -2 : 2
+	var/old_pixel_x = pixel_x
+	animate(src, pixel_x = pixel_x + offset, time = 0.2, loop = -1) //start shaking
+	addtimer(CALLBACK(src, PROC_REF(stop_shaking), old_pixel_x), duration)
+
 /obj/machinery/reagentgrinder/proc/stop_shaking(old_px)
 	animate(src)
 	pixel_x = old_px
 
 /obj/machinery/reagentgrinder/proc/operate_for(time, silent = FALSE, juicing = FALSE)
-	var/duration = time / speed
-	Shake(pixelshiftx = 1, pixelshifty = 0, duration = duration)
+	shake_for(time / speed)
 	operating = TRUE
 	if(!silent)
 		if(!juicing)

@@ -322,13 +322,6 @@
 	name = "dead wolf"
 	mob_type = /mob/living/simple_animal/hostile/asteroid/wolf
 
-/obj/effect/mob_spawn/animal_corpse/monkey
-	name = "dead monkey"
-	mob_type = /mob/living/carbon/monkey
-
-/obj/effect/mob_spawn/animal_corpse/junglefowl //chicken
-	name = "dead monkey"
-	mob_type = /mob/living/simple_animal/hostile/retaliate/chicken
 
 // I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
 
@@ -453,9 +446,9 @@
 	. = ..()
 
 	var/obj/item/card/id/W = H.get_idcard()
-	if(H.age < AGE_DRINKING)
-		W.registered_age = AGE_DRINKING
-		to_chat(H, span_notice("You're not technically old enough to access or serve alcohol, but your ID has been discreetly modified to display your age as [AGE_DRINKING]. Try to keep that a secret!"))
+	if(H.age < AGE_MINOR)
+		W.registered_age = AGE_MINOR
+		to_chat(H, span_notice("You're not technically old enough to access or serve alcohol, but your ID has been discreetly modified to display your age as [AGE_MINOR]. Try to keep that a secret!"))
 
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
@@ -493,15 +486,15 @@
 		return
 	H.dna.add_mutation(STONER)
 
-/////////////////Officers+Makosso-Warra Security//////////////////////
+/////////////////Officers+Nanotrasen Security//////////////////////
 
 /obj/effect/mob_spawn/human/bridgeofficer
 	name = "Bridge Officer"
 	id_job = "Bridge Officer"
 	id_access_list = list(ACCESS_CENT_CAPTAIN)
-	outfit = /datum/outfit/warrabridgeofficercorpse
+	outfit = /datum/outfit/nanotrasenbridgeofficercorpse
 
-/datum/outfit/warrabridgeofficercorpse
+/datum/outfit/nanotrasenbridgeofficercorpse
 	name = "Bridge Officer Corpse"
 	ears = /obj/item/radio/headset/heads/head_of_personnel
 	uniform = /obj/item/clothing/under/rank/centcom/official
@@ -515,10 +508,10 @@
 	name = "Commander"
 	id_job = "Commander"
 	id_access_list = list(ACCESS_CENT_CAPTAIN, ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_MEDICAL, ACCESS_CENT_STORAGE)
-	outfit = /datum/outfit/warracommandercorpse
+	outfit = /datum/outfit/nanotrasencommandercorpse
 
-/datum/outfit/warracommandercorpse
-	name = "\improper Vigilitas Private Security Commander"
+/datum/outfit/nanotrasencommandercorpse
+	name = "\improper Nanotrasen Private Security Commander"
 	uniform = /obj/item/clothing/under/rank/centcom/commander
 	suit = /obj/item/clothing/suit/armor/vest/bulletproof
 	ears = /obj/item/radio/headset/heads/captain
@@ -531,30 +524,30 @@
 	id = /obj/item/card/id
 
 
-/obj/effect/mob_spawn/human/warrasoldier
-	name = "\improper Vigilitas LP Security Specialist"
+/obj/effect/mob_spawn/human/nanotrasensoldier
+	name = "\improper Nanotrasen LP Security Specialist"
 	id_job = "Private Security Force"
 	id_access_list = list(ACCESS_CENT_CAPTAIN, ACCESS_CENT_GENERAL, ACCESS_CENT_SPECOPS, ACCESS_CENT_MEDICAL, ACCESS_CENT_STORAGE, ACCESS_SECURITY, ACCESS_MECH_SECURITY)
-	outfit = /datum/outfit/job/warra/security/lp
+	outfit = /datum/outfit/job/nanotrasen/security/lp
 
 /obj/effect/mob_spawn/human/commander/alive
 	death = FALSE
 	roundstart = FALSE
-	mob_name = "\improper Vigilitas Commander"
+	mob_name = "\improper Nanotrasen Commander"
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	short_desc = "You are a Vigilitas Commander!"
+	short_desc = "You are a Nanotrasen Commander!"
 
-/obj/effect/mob_spawn/human/warrasoldier/alive
+/obj/effect/mob_spawn/human/nanotrasensoldier/alive
 	death = FALSE
 	roundstart = FALSE
 	mob_name = "Private Security Officer"
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	faction = "warraprivate"
-	short_desc = "You are a Vigilitas Private Security Officer!"
+	faction = "nanotrasenprivate"
+	short_desc = "You are a Nanotrasen Private Security Officer!"
 
 
 /////////////////Spooky Undead//////////////////////

@@ -20,29 +20,29 @@
 	],
 	"job_slots": {
 		"Captain": {
-			"outfit": "/datum/outfit/job/cybersun/officer/captain",
+			"outfit": "/datum/outfit/job/syndicate/captain/cybersun",
 			"officer": true,
 			"slots": 1
 		},
 		"Medical Director": {
-			"outfit": "/datum/outfit/job/cybersun/officer/cmo",
+			"outfit": "/datum/outfit/job/syndicate/cmo",
 			"officer": true,
 			"slots": 1
 		},
 		"Technician": {
-			"outfit": "/datum/outfit/job/cybersun/engineer",
+			"outfit": "/datum/outfit/job/syndicate/engineer/cybersun",
 			"slots": 1
 		},
 		"Doctor": {
-			"outfit": "/datum/outfit/job/cybersun/doctor",
+			"outfit": "/datum/outfit/job/syndicate/doctor/cybersun",
 			"slots": 1
 		},
 		"Trauma Team Technician": {
-			"outfit": "/datum/outfit/job/cybersun/paramedic",
+			"outfit": "/datum/outfit/job/syndicate/paramedic/cybersun",
 			"slots": 2
 		},
 		"Ship's Aide": {
-			"outfit": "/datum/outfit/job/cybersun/assistant",
+			"outfit": "/datum/outfit/job/syndicate/assistant/cybersun",
 			"slots": 1
 		}
 	},

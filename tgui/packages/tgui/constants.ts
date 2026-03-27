@@ -130,7 +130,7 @@ export const RADIO_CHANNELS = [
     color: '#199943',
   },
   {
-    name: 'Makosso-Warra',
+    name: 'Nanotrasen',
     freq: 1351,
     color: '#c68cfa',
   },

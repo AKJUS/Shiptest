@@ -329,11 +329,11 @@
 	item_chair = /obj/item/chair/plastic
 
 /obj/structure/chair/plastic/post_buckle_mob(mob/living/Mob)
-	Mob.add_offsets(type, z_add = 2)
-	. = ..()
+	Mob.pixel_y += 2
+	.=..()
 
 /obj/structure/chair/plastic/post_unbuckle_mob(mob/living/Mob)
-	Mob.remove_offsets(type)
+	Mob.pixel_y -= 2
 
 /obj/item/chair/plastic
 	name = "folding plastic chair"

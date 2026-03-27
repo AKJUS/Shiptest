@@ -82,7 +82,7 @@
 		/obj/item/clothing/glasses/welding, //WS edit: ok mald sure I'll add the welding stuff to the. ok.
 		/obj/item/clothing/mask/gas/welding,
 		/obj/item/clothing/head/welding, //WS end
-		/obj/item/plasmacutter,
+		/obj/item/gun/energy/plasmacutter,
 		/obj/item/bodycamera,
 		/obj/item/stack/tape/industrial,
 		/obj/item/trench_tool,
@@ -312,7 +312,6 @@
 		/obj/item/ammo_box/vickland_a8_50r,
 		/obj/item/ammo_box/a300,
 		/obj/item/ammo_box/a762_stripper,
-		/obj/item/ammo_box/a4570,
 		/obj/item/ammo_box/amagpellet_claris, //that's the last of the clips
 		/obj/item/food/donut,
 		/obj/item/melee/knife/combat,
@@ -489,7 +488,6 @@
 		/obj/item/gun/energy/sharplite/x26,
 		/obj/item/gun/energy/disabler,
 		/obj/item/gun/energy/kalix/pistol,
-		/obj/item/bodycamera,
 		))
 	STR.exception_hold = exception_cache
 	STR.max_w_class = WEIGHT_CLASS_SMALL
@@ -526,7 +524,7 @@
 
 /obj/item/storage/belt/military/snack/Initialize()
 	. = ..()
-	var/sponsor = pick("Makosso-Warra", "CyberSun")
+	var/sponsor = pick("Donk! Co.", "CyberSun")
 	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
 
 /obj/item/storage/belt/military/snack/ComponentInitialize()
@@ -556,7 +554,7 @@
 		/obj/item/food/nugget,
 		/obj/item/food/spaghetti/pastatomato,
 		/obj/item/food/rofflewaffles,
-		/obj/item/food/shoalpocket,
+		/obj/item/food/donkpocket,
 		/obj/item/reagent_containers/food/drinks/soda_cans/cola,
 		/obj/item/reagent_containers/food/drinks/soda_cans/comet_trail,
 		/obj/item/reagent_containers/food/drinks/soda_cans/tadrixx,
@@ -690,7 +688,7 @@
 /obj/item/storage/belt/janitor/full/PopulateContents()
 	new /obj/item/lightreplacer(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
-	new /obj/item/soap/warra(src)
+	new /obj/item/soap/nanotrasen(src)
 	new /obj/item/holosign_creator(src)
 	new /obj/item/melee/flyswatter(src)
 
